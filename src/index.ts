@@ -3,10 +3,20 @@ const path = require('path');
 const fs = require('fs');
 import * as chalk from 'chalk';
 import { ForegroundColor, Chalk } from 'chalk';
+import { SpawnOptions } from 'child_process';
 
 import runCommand from './lib/runCommand';
 import colors from './lib/colors';
 import cleanString from './lib/cleanString';
+
+type SpawnArgs = [ string, string[], SpawnOptions? ];
+type JobDefinition = { command: SpawnArgs; pre?: SpawnArgs[] };
+
+interface IJobFile {
+  defaultSpawnOptions?: SpawnOptions;
+  commands: Record<string, (SpawnArgs | JobDefinition)>;
+  exitStrategy?: 'race' | 'all';
+}
 
 
 class Liloo extends Command {
@@ -37,7 +47,7 @@ class Liloo extends Command {
   
       if (fs.existsSync(jobFile)) {
         console.log('exists')
-        const jobConfig = JSON.parse(fs.readFileSync(jobFile));
+        const jobConfig: IJobFile = JSON.parse(fs.readFileSync(jobFile));
   
         // console.log('jobs: ', jobConfig);
         const defers: Promise<unknown>[] = [];
@@ -45,9 +55,9 @@ class Liloo extends Command {
         let j = 0;
   
         for (const job in jobConfig.commands) {
-          const maybeCommand = jobConfig.commands[job];
-          const mainCommand = Array.isArray(maybeCommand) ? maybeCommand : maybeCommand.command;
-          const preCommands = !Array.isArray(maybeCommand) && Array.isArray(maybeCommand.pre) ? maybeCommand.pre : [];
+          const maybeCommand: SpawnArgs | JobDefinition = jobConfig.commands[job];
+          const mainCommand: SpawnArgs = Array.isArray(maybeCommand) ? maybeCommand : maybeCommand.command;
+          const preCommands: SpawnArgs[] = !Array.isArray(maybeCommand) && Array.isArray(maybeCommand.pre) ? maybeCommand.pre : [];
           const color = colors[j % colors.length];
           const log = (...args: string[]) => console.log(chalk[color](...args));
           const error = (...args: string[]) => console.log(chalk.red(...args));
