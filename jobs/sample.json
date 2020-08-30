@@ -1,0 +1,10 @@
+{
+  "commands": {
+    "ssh-tunnel" : {
+      "command" : [ "echo", [ "Allo !" ] ],
+      "pre" : [
+        ["echo", ["Connecting to distant server..."]]
+      ]
+    }
+  }
+}
