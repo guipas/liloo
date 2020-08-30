@@ -16,7 +16,7 @@ class Liloo extends Command {
     // add --version flag to show CLI version
     version: flags.version({char: 'v'}),
     help: flags.help({char: 'h'}),
-    // job: flags.string({ char: 'j', description: 'path to the json file representing the job to run, default to ./lilou.json'}),
+    // job: flags.string({ char: 'j', description: 'path to the json file representing the job to run, default to ./liloo.json'}),
   }
 
   static args = [{name: 'job'}]

@@ -6,7 +6,7 @@ liloo
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/liloo.svg)](https://npmjs.org/package/liloo)
 [![Downloads/week](https://img.shields.io/npm/dw/liloo.svg)](https://npmjs.org/package/liloo)
-[![License](https://img.shields.io/npm/l/liloo.svg)](https://github.com/guipas/lilou/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/liloo.svg)](https://github.com/guipas/liloo/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)

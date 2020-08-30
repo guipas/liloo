@@ -5,7 +5,7 @@
   "bin": {
     "liloo": "./bin/run"
   },
-  "bugs": "https://github.com/guipas/lilou/issues",
+  "bugs": "https://github.com/guipas/liloo/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -35,7 +35,7 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/guipas/lilou",
+  "homepage": "https://github.com/guipas/liloo",
   "keywords": [
     "oclif"
   ],
@@ -44,7 +44,7 @@
   "oclif": {
     "bin": "liloo"
   },
-  "repository": "guipas/lilou",
+  "repository": "guipas/liloo",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
