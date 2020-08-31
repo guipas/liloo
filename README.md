@@ -12,7 +12,6 @@ liloo
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
-* [Job file](#jobs)
 # Usage
 <!-- usage -->
 ```sh-session
@@ -31,3 +30,26 @@ USAGE
 <!-- commands -->
 
 <!-- commandsstop -->
+# Job file
+```
+{
+  "defaultSpawnOptions" : { "cwd" : "/home/user/projects/api" },
+  "commands": {
+    "UI" : [ "npm", ["start"],  { "cwd" : "/home/user/projects/react-app" } ],
+    "watch-ts" : [ "npm", ["run", "watch-ts"] ],
+    "watch-express" : [ "npm", ["run", "watch-express"] ],
+    "ssh-tunnel" : {
+      "command" : [ 
+        "ssh", 
+        [ 
+          "-R", "5432:localhost:5432", 
+          "root@distant.db.server" 
+        ] 
+      ],
+      "pre" : [
+        ["echo", ["Connecting to distant server..."]]
+      ]
+    }
+  }
+}
+```
