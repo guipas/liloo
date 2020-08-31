@@ -20,7 +20,7 @@ $ npm install -g liloo
 $ liloo COMMAND
 running command...
 $ liloo (-v|--version|version)
-liloo/0.0.0 linux-x64 node-v11.15.0
+liloo/0.0.1 linux-x64 node-v11.15.0
 $ liloo --help [COMMAND]
 USAGE
   $ liloo COMMAND
