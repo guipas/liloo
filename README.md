@@ -13,19 +13,9 @@ liloo
 * [Job file](#job-file)
 <!-- tocstop -->
 # Usage
-<!-- usage -->
 ```sh-session
-$ npm install -g liloo
-$ liloo COMMAND
-running command...
-$ liloo (-v|--version|version)
-liloo/0.0.2 linux-x64 node-v11.15.0
-$ liloo --help [COMMAND]
-USAGE
-  $ liloo COMMAND
-...
+$ npx liloo job-file.json
 ```
-<!-- usagestop -->
 # Job file
 Here is an example of a job file to launch several process when developping an express app locally: 
 ```
