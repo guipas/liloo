@@ -1,6 +1,6 @@
 {
   "name": "liloo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Guillaume P",
   "bin": {
     "liloo": "./bin/run"
