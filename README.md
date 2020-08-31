@@ -10,7 +10,6 @@ liloo
 
 <!-- toc -->
 * [Usage](#usage)
-* [Commands](#commands)
 <!-- tocstop -->
 # Usage
 <!-- usage -->
@@ -26,11 +25,8 @@ USAGE
 ...
 ```
 <!-- usagestop -->
-# Commands
-<!-- commands -->
-
-<!-- commandsstop -->
 # Job file
+Here is an example of a job file to launch several process when developping an express app locally: 
 ```
 {
   "defaultSpawnOptions" : { "cwd" : "/home/user/projects/api" },
