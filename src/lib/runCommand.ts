@@ -1,11 +1,12 @@
-const fs = require('fs');
-const { spawn } = require('child_process');
-const path = require('path');
+import * as fs from 'fs';
+import { spawn, SpawnOptions } from 'child_process';
+import * as path from 'path';
+import { SpawnArgs } from '../models/SpawnArgs';
 
 interface IRunCommandArgs {
   logger: { log: ((s: string) => void); error: ((s: string) => void)};
-  command: any;
-  defaultSpawnOptions: any;
+  command: SpawnArgs;
+  defaultSpawnOptions: SpawnOptions;
 }
 
 export default function runCommand ({logger, command, defaultSpawnOptions}: IRunCommandArgs) {

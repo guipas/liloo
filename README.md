@@ -12,21 +12,37 @@ liloo
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+* [Job file](#jobs)
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g liloo
-$ liloo COMMAND
-running command...
-$ liloo (-v|--version|version)
-liloo/0.0.0 linux-x64 node-v11.15.0
-$ liloo --help [COMMAND]
-USAGE
-  $ liloo COMMAND
-...
+$ npx job.json
+```
+# Jobs
+Here is an example of a file that launches a few process to develop an express application locally:
+```
+{
+  "defaultSpawnOptions" : { "cwd" : "/home/user/projects/api" },
+  "commands": {
+    "UI" : [ "npm", ["start"],  { "cwd" : "/home/user/projects/ui" } ],
+    "watch-ts" : [ "npm", ["run", "watch-ts"] ],
+    "watch-express" : [ "npm", ["run", "watch-express"] ],
+    "ssh-tunnel" : {
+      "command" : [ 
+        "ssh", 
+        [ 
+          "-R", "5000:localhost:5000", 
+          "root@remote.server" 
+        ] 
+      ],
+      "pre" : [
+        ["echo", ["Connecting to distant server..."]]
+      ]
+    }
+  }
+}
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-
 <!-- commandsstop -->

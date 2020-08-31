@@ -1,6 +1,6 @@
 import {Command, flags} from '@oclif/command'
-const path = require('path');
-const fs = require('fs');
+import * as path from 'path';
+import * as fs from 'fs';
 import * as chalk from 'chalk';
 import { ForegroundColor, Chalk } from 'chalk';
 import { SpawnOptions } from 'child_process';
@@ -8,8 +8,9 @@ import { SpawnOptions } from 'child_process';
 import runCommand from './lib/runCommand';
 import colors from './lib/colors';
 import cleanString from './lib/cleanString';
+import { SpawnArgs } from './models/SpawnArgs'; 
 
-type SpawnArgs = [ string, string[], SpawnOptions? ];
+
 type JobDefinition = { command: SpawnArgs; pre?: SpawnArgs[] };
 
 interface IJobFile {
@@ -47,7 +48,7 @@ class Liloo extends Command {
   
       if (fs.existsSync(jobFile)) {
         console.log('exists')
-        const jobConfig: IJobFile = JSON.parse(fs.readFileSync(jobFile));
+        const jobConfig: IJobFile = JSON.parse(fs.readFileSync(jobFile).toString());
   
         // console.log('jobs: ', jobConfig);
         const defers: Promise<unknown>[] = [];
@@ -82,7 +83,6 @@ class Liloo extends Command {
             })
           } 
   
-          // console.log('trying to spawn', command);
           const mainCommandResult = runCommand({
             command: mainCommand,
             logger: {
@@ -106,9 +106,9 @@ class Liloo extends Command {
         }
   
         if (jobConfig.exitStrategy === 'race') {
-          await Promise.race(defers)
+          await Promise.race(defers);
         } else {
-          await Promise.all(defers)
+          await Promise.all(defers);
         }
       }
       

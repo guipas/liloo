@@ -2,8 +2,8 @@ import { string } from "@oclif/command/lib/flags";
 
 export default function cleanString (str: string) {
   const replacements: [string | RegExp, string][] = [
-    // [/\n+$/, ''],
-    // ['\033c', '']
+    [/\n+$/, ''],
+    // ['\\033c', '']
   ];
 
   let cleanedString = str.toString();
